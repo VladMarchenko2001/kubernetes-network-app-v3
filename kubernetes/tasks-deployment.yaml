@@ -25,6 +25,5 @@ spec:
               name: tasks-volume
       volumes:
         - name: tasks-volume
-          hostPath: # mounts a file or directory from the host node's filesystem into your Pod
-            path: /data
-            type: DirectoryOrCreate
+          persistentVolumeClaim:
+            claimName: host-pvc
