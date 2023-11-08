@@ -19,7 +19,10 @@ spec:
             - name: AUTH_DOMAIN
               value: 'auth-service.default'
             - name: TASKS_FOLDER
-              value: 'tasks'
+              valueFrom:
+                configMapKeyRef:
+                  name: env-vars
+                  key: tasksFolder
           volumeMounts:
             - mountPath: /app/tasks
               name: tasks-volume
