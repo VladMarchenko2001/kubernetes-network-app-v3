@@ -17,4 +17,4 @@ spec:
           image: vladtraum/kub-network-app-v3-users:latest
           env:
             - name: AUTH_DOMAIN
-              value: "10.103.188.181" # auth-service ClusterIP
+              value: "auth-service.default" # built-in core dns feature. Works inside the cluster based on service name. default - namespace
