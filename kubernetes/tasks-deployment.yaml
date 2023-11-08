@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tasks-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tasks
+  template:
+    metadata:
+      labels:
+        app: tasks
+    spec:
+      containers:
+        - name: tasks
+          image: vladtraum/kub-network-app-v3-tasks:latest
+          env:
+            - name: AUTH_DOMAIN
+              value: 'auth-service.default'
+            - name: TASKS_FOLDER
+              value: 'tasks'
+          volumeMounts:
+            - mountPath: /app/tasks
+              name: tasks-volume
+      volumes:
+        - name: tasks-volume
+          hostPath: # mounts a file or directory from the host node's filesystem into your Pod
+            path: /data
+            type: DirectoryOrCreate
