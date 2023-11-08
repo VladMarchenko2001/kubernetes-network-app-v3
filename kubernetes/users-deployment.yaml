@@ -17,6 +17,4 @@ spec:
           image: vladtraum/kub-network-app-v3-users:latest
           env:
             - name: AUTH_DOMAIN
-              value: localhost
-        - name: auth
-          image: vladtraum/kub-network-app-v3-auth:latest
+              value: "10.103.188.181" # auth-service ClusterIP
